@@ -1,6 +1,12 @@
 node {  
-    stage('Build') { 
-        //echo Building
+    stage ('Build') {
+            steps {
+                sh 'mvn -Dmaven.test.failure.ignore=true install' 
+            }
+            
+
+        
+        
     }
     stage('Test') { 
         // echo Testing
