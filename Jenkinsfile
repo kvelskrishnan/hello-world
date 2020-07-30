@@ -35,5 +35,10 @@ pipeline {
             //    sh "mvn sonar:sonar -Dsonar.host.url=http://cdedevops-lab.eastus.cloudapp.azure.com/:9000 -Dsonar.login=527594b9d7617417d8b08075f9167f2b95735bd0"
            // }
         //}
+        stage('docker build') {
+            steps {
+                sh "docker build -t $JOB_BASE_NAME:$BUILD_NUMBER ."
+            }
+        }
     }
 }
