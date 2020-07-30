@@ -16,18 +16,18 @@ pipeline {
                 sh 'mvn -B clean install'
             }
         }
-        stage('Unit Test') {
+        //stage('Unit Test') {
             
-            steps {
+           // steps {
 
-                sh 'mvn test'
-            }
-            post {
-                always {
-                    junit 'target/surefire-reports/*.xml'
-                }
-            }
-        }
+             //   sh 'mvn test'
+            //}
+            //post {
+              //  always {
+                //    junit 'target/surefire-reports/*.xml'
+                //}
+           // }
+        //}
         stage('Code Quality - Analysis') {
             
             steps {
