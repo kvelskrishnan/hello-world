@@ -28,12 +28,12 @@ pipeline {
                 //}
            // }
         //}
-        stage('Code Quality - Analysis') {
+       // stage('Code Quality - Analysis') {
             
-            steps {
+         //   steps {
 
-                sh "mvn sonar:sonar -Dsonar.host.url=http://cdedevops-lab.eastus.cloudapp.azure.com/:9000 -Dsonar.login=527594b9d7617417d8b08075f9167f2b95735bd0"
-            }
-        }
+            //    sh "mvn sonar:sonar -Dsonar.host.url=http://cdedevops-lab.eastus.cloudapp.azure.com/:9000 -Dsonar.login=527594b9d7617417d8b08075f9167f2b95735bd0"
+           // }
+        //}
     }
 }
