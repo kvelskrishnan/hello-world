@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'maven:3-alpine'
-            args '-v $HOME/.m2:/root/.m2'
-        }
-    }
+    agent none
     stages {
         //stage('checkout') {
             //steps {
@@ -12,10 +7,15 @@ pipeline {
             //}
         //}
         stage('Build') {
-            steps {
-                sh 'mvn -B clean install'
+            agent {
+            docker {
+                image 'maven:3-alpine'
+                args '-v $HOME/.m2:/root/.m2'}
+                }
+                steps {
+                    sh 'mvn -B clean install'
+                }
             }
-        }
         //stage('Unit Test') {
             
            // steps {
@@ -35,8 +35,8 @@ pipeline {
             //    sh "mvn sonar:sonar -Dsonar.host.url=http://cdedevops-lab.eastus.cloudapp.azure.com/:9000 -Dsonar.login=527594b9d7617417d8b08075f9167f2b95735bd0"
            // }
         //}
-         agent any
         stage('docker build') {
+            agent {label 'master'}
             steps {
                 sh "docker build -t $JOB_BASE_NAME:$BUILD_NUMBER ."
             }
